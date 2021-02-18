@@ -1,0 +1,42 @@
+n = int(input())
+k = 1
+while k <= n-1:
+    print(" ", end="")
+    k += 1
+print("*")
+k = 1
+
+while k <= n-1:
+    j = 1
+    while j<=n-1-k:
+        print(" ", end="")
+        j+=1
+    print("*", end="")
+    t=j
+    while j<2*n-t-1:
+        print(" ", end="")
+        j += 1
+    print("*")
+    k+=1
+k = 1
+j = 2*n-5
+while k <= n-2:
+    i = 1
+    while i<=k:
+        print(" ", end="")
+        i+=1
+    print("*", end="")
+    t = 1
+
+    while t <= j:
+        print(" ", end="")
+        t += 1
+    j-=2
+    print("*")
+    k+=1
+if n>1:
+    i = 1
+    while i<=n-1:
+        print(" ", end="")
+        i+=1
+    print("*")
