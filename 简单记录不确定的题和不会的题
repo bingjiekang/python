@@ -1,0 +1,120 @@
+select_record_un = []
+pd_record_un = []
+tk_record_un = []
+select_record_worry = []
+pd_record_worry = []
+tk_record_worry = []
+
+# 记录选择不确定的题
+
+class record_un():
+
+    """
+    输入r1为输入不确定的选择题
+    输入r2为输入不确定的判断题
+    输入r3为输入不确定的填空题
+    """
+    def record_unsure(self,m):
+        global select_record_un,pd_record_un,tk_record_un
+        if m=="r1":
+            select_record_un = [int(i) for i in input().split()]
+        #    self.record_select_un = select_record_un
+        elif m=="r2":
+            pd_record_un = [int(i) for i in input().split()]
+        #    self.record_pd_un = pd_record_un
+        elif m=="r3":
+            tk_record_un = [int(i) for i in input().split()]
+        #    self.record_tk_un = tk_record_un
+
+    # 输入pr1为输出不确定的选择题
+    # 输入pr2为输出不确定的判断题
+    # 输入pr3为输出不确定的填空题
+    def record_unsure_print(self,n):
+        if n=="pr1":
+            print("不确定的选择题:",select_record_un)
+        elif n=="pr2":
+            print("不确定的判断题",pd_record_un)
+        elif n=="pr3":
+            print("不确定的填空题",tk_record_un)
+        else:
+            pass
+
+# 记录错误的题
+class record_worry():
+
+    """
+    输入w1为输入错误的选择题
+    输入w2为输入错误的判断题
+    输入w3为输入错误的填空题
+    """
+    def record_not(self,m):
+        global select_record_worry,pd_record_worry,tk_record_worry
+        if m=="w1":
+            select_record_worry = [int(i) for i in input().split()]
+        #    self.record_select_un = select_record_un
+        elif m=="w2":
+            pd_record_worry = [int(i) for i in input().split()]
+        #    self.record_pd_un = pd_record_un
+        elif m=="w3":
+            tk_record_worry = [int(i) for i in input().split()]
+        #    self.record_tk_un = tk_record_un
+
+    # 输入pw1为输出错误的选择题
+    # 输入pw2为输出错误的判断题
+    # 输入pw3为输出错误的填空题
+    def record_not_print(self,n):
+        if n=="pw1":
+            print("不正确的选择题:",select_record_worry)
+        elif n=="pw2":
+            print("不正确的判断题",pd_record_worry)
+        elif n=="pw3":
+            print("不正确的填空题",tk_record_worry)
+        else:
+            pass
+
+
+
+def images():
+    print("-"*50)
+    print("记录不确定的选择题请输入 r1")
+    print("记录不确定的判断题请输入 r2")
+    print("记录不确定的填空题请输入 r3")
+    print("记录错误的选择题请输入 w1")
+    print("记录错误的判断题请输入 w2")
+    print("记录错误的填空题请输入 w3")
+    print("*" * 50)
+    print("输出不确定的选择题请输入 pr1")
+    print("输出不确定的判断题请输入 pr2")
+    print("输出不确定的填空题请输入 pr3")
+    print("输出错误的选择题请输入 pw1")
+    print("输出错误的判断题请输入 pw2")
+    print("输出错误的填空题请输入 pw3")
+    print("如果结束请输入 end")
+    print("只能输入数字且以空格隔开输入题号，以换行隔开不同选择")
+    print("-" * 50)
+
+def reality_recode(t):
+    #类
+    ro = record_un()
+    wo = record_worry()
+    if(t=="r1" or t=="r2" or t=="r3"):
+        ro.record_unsure(t)
+    elif(t=="pr1" or t=="pr2" or t=="pr3"):
+        ro.record_unsure_print(t)
+    elif (t == "w1" or t == "w2" or t == "w3"):
+        wo.record_not(t)
+    elif (t == "pw1" or t == "pw2" or t == "pw3"):
+        wo.record_not_print(t)
+
+
+def main():
+    images()
+    while(True):
+
+        r = input()
+        if(r=="end"):
+            break
+        reality_recode(r)
+
+if __name__ == "__main__":
+    main()
