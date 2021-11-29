@@ -1,0 +1,33 @@
+import urllib.request
+import gevent
+from gevent import monkey
+monkey.patch_all()
+import time
+
+def downlode_picture(url,image_name):
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0'}
+    req = urllib.request.Request(url=url, headers=headers)
+    img = urllib.request.urlopen(req).read()
+    # 打开的文档 读取里面的链接 按行区分
+    with open("C:/Users/94284/Desktop/tp/"+image_name+".jpg","wb") as f:
+        f.write(img)
+
+def main():
+    """
+    下载到 C:/Users/94284/Desktop/内容.txt 可更改
+    :return: 
+    """
+    t = open("C:/Users/94284/Desktop/内容.txt","r")
+    for i in range(19):
+        gevent.joinall([
+            gevent.spawn(downlode_picture,t.readline(),str(i)),
+        ])
+#   t.readline()
+#     while True:
+#         print(t.readline())
+#         time.sleep(1)
+
+
+
+if __name__ == "__main__":
+    main()
